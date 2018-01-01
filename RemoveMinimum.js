@@ -6,16 +6,8 @@ Don't change the order of the elements that are left.
 */
 
 function removeSmallest(numbers) {
-    var temp = numbers[0];
-    
-    var index = numbers.length;
-    
-   for( var i=0 ; i <numbers.length; i++){
-        if(numbers[i] <=temp){
-          temp = numbers[i];
-        }
-    }
-  
-    numbers.splice(numbers.indexOf(temp), 1);
+    var temp = (numbers.slice()).sort();
+    numbers.splice(numbers.indexOf(temp[0]), 1);
     return numbers;
-  }
+
+}
