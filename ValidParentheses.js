@@ -13,15 +13,7 @@ It should work for random input too
 */
 
 function validParentheses(parens) {
-
-    var parens = parens.split('');
-    if (parens[0] == ')' || parens[parens.length - 1] == '(') return false;
-    var open = parens.filter(function (elt) {
-        return elt === '(';
-    });
-    var close = parens.filter(function (elt) {
-        return elt === ')';
-    });
-
-    return open.length == close.length;
+    var re = /\(\)/;
+    while (re.test(parens)) parens = parens.replace(re, "");
+    return !parens;
 }
