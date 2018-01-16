@@ -12,23 +12,18 @@ return a position of this number.
 iqTest("1 2 1 1") => 2 // Second number is even, while the rest of the numbers are odd
 
 */
+
 function iqTest(numbers) {
-    numbers = numbers.split(" ");
+    numbers = numbers.split(" ").map(function (el) {
+        return parseInt(el)
+    });
 
-    for (var i = 0; i < numbers.length; i++) {
-        if (parseInt(numbers[i]) % 2 == 0) {
-            numbers[i] = 1;
-        } else {
-            numbers[i] = 0;
-        }
-    }
+    var odd = numbers.filter(function (el) {
+        return el % 2 === 1
+    });
+    var even = numbers.filter(function (el) {
+        return el % 2 === 0
+    });
 
-    var result = 0;
-    for (var i = 0; i < numbers.length; i++) {
-        if (numbers.indexOf(numbers[i]) === numbers.lastIndexOf(numbers[i])) {
-            result = i + 1;
-        }
-    }
-
-    return result;
+    return odd.length < even.length ? (numbers.indexOf(odd[0]) + 1) : (numbers.indexOf(even[0]) + 1);
 }
